@@ -1,0 +1,36 @@
+{
+  "description": "S13 pre-registered expected locations (written before running retrieval)",
+  "fixtures": [
+    {
+      "id": "fx_entity_version",
+      "query": "NebulaGate v2.4.1",
+      "expect_substring": "NebulaGate",
+      "expect_also": "v2.4.1",
+      "notes": "实体名+版本号应进入候选"
+    },
+    {
+      "id": "fx_zh_question",
+      "query": "断网环境如何部署",
+      "expect_substring": "断网环境",
+      "notes": "中文问句"
+    },
+    {
+      "id": "fx_en_api",
+      "query": "CreateEvidenceSession",
+      "expect_substring": "CreateEvidenceSession",
+      "notes": "英文 API 名称"
+    },
+    {
+      "id": "fx_multidoc_version",
+      "query": "source_version_id 锁定原文",
+      "expect_substring": "source_version_id",
+      "notes": "多文档问题"
+    },
+    {
+      "id": "fx_zero",
+      "query": "火星土豆协议ZZZQQQXXX999888",
+      "expect_empty": true,
+      "notes": "T07 零结果不造候选"
+    }
+  ]
+}

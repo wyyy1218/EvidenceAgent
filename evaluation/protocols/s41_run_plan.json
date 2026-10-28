@@ -1,0 +1,131 @@
+{
+  "planned_formal_runs": 2544,
+  "target": 2544,
+  "matches_target": true,
+  "batches": [
+    {
+      "batch_id": "main_test300",
+      "step": "S42",
+      "systems": [
+        "b0",
+        "b1",
+        "b2",
+        "e0",
+        "e1",
+        "e2"
+      ],
+      "n_tasks": 300,
+      "n_runs": 1800,
+      "temperature": 0.0,
+      "web_mode": "off_or_replay",
+      "notes": "Six systems × full test300; failures remain in denominator"
+    },
+    {
+      "batch_id": "ablation_no_source_anchor",
+      "step": "S43",
+      "systems": [
+        "e0"
+      ],
+      "variant": "no_source_anchor",
+      "n_tasks": 100,
+      "n_runs": 100,
+      "task_subset": "ablation100",
+      "notes": "Server keeps real sources for audit/scoring; only policy-visible anchors removed"
+    },
+    {
+      "batch_id": "ablation_hide_visible_budget",
+      "step": "S43",
+      "systems": [
+        "e0"
+      ],
+      "variant": "hide_visible_budget",
+      "n_tasks": 100,
+      "n_runs": 100,
+      "task_subset": "ablation100",
+      "notes": "Hide budget fields in policy input; executor hard budget unchanged"
+    },
+    {
+      "batch_id": "budget_curve_b4_b12",
+      "step": "S44",
+      "systems": [
+        "b1",
+        "e0"
+      ],
+      "budgets": [
+        4,
+        12
+      ],
+      "n_tasks": 60,
+      "n_runs": 240,
+      "task_subset": "budget_stability60",
+      "reuse": "budget8 from main experiment"
+    },
+    {
+      "batch_id": "stability_seed43_44",
+      "step": "S44",
+      "systems": [
+        "b1",
+        "e0"
+      ],
+      "seeds": [
+        43,
+        44
+      ],
+      "temperature": 0.3,
+      "n_tasks": 60,
+      "n_runs": 240,
+      "task_subset": "budget_stability60",
+      "notes": "Not same-distribution replicates of temperature-0 main rows"
+    },
+    {
+      "batch_id": "drbench12",
+      "step": "S45",
+      "systems": [
+        "b1",
+        "e0"
+      ],
+      "n_tasks": 12,
+      "n_runs": 24,
+      "status": "IDS_PENDING_CATALOG",
+      "notes": "External custom subset; do not mix into main aggregates"
+    },
+    {
+      "batch_id": "live20",
+      "step": "S45",
+      "systems": [
+        "b1",
+        "e0"
+      ],
+      "n_tasks": 20,
+      "n_runs": 40,
+      "status": "PROTOCOL_FROZEN_TASKS_PENDING",
+      "notes": "Live web; AB/BA adjacent; not mixed into main aggregates"
+    }
+  ],
+  "excluded_from_2544": [
+    "checkpoint screening",
+    "DPO branch collection (≥2800 or more)",
+    "pilot / probes",
+    "dev evaluation (S33/S39)",
+    "training runs",
+    "infrastructure failure reruns (logged separately)"
+  ],
+  "blind_review": {
+    "step": "S46",
+    "subset": "blind60",
+    "n_tasks": 60,
+    "systems": [
+      "b1",
+      "e0"
+    ],
+    "outputs": 120,
+    "not_counted_in_2544": true,
+    "reason": "human labeling, not system model runs in the 2544 plan table"
+  },
+  "failure_rerun_policy": {
+    "valid_low_score": "do_not_rerun_for_better_score",
+    "infrastructure_fault": "may_rerun_under_rule; keep original failure + extra cost",
+    "system_timeout_or_tool_fail": "remain_in_denominator; not silently dropped",
+    "missing_system_version": "report column incomplete; do not fill from other systems"
+  }
+}

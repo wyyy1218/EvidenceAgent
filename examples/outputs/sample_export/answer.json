@@ -1,0 +1,20 @@
+{
+  "run_id": "run_demo_sample_0001",
+  "project_id": "demo",
+  "question": "用一句话说明什么是可追溯证据。",
+  "status": "completed",
+  "result": {
+    "answer": "可追溯证据是指声明能够回到原始出处，并保留位置与版本信息的证据记录。",
+    "status": "answered",
+    "system": "e0",
+    "usage": {
+      "note": "脱敏示例；非正式评测记录"
+    }
+  },
+  "version_set": [
+    {
+      "doc": "demo_traceable.md",
+      "note": "examples/docs 夹具"
+    }
+  ]
+}

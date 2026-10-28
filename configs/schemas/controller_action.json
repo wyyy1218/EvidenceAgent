@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence-agent/controller_action.json",
+  "title": "ControllerAction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action", "query", "candidate_id", "reason_code"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["local_search", "web_search", "read_evidence", "finish", "abstain"]
+    },
+    "query": {
+      "type": ["string", "null"],
+      "maxLength": 256
+    },
+    "candidate_id": {
+      "type": ["string", "null"],
+      "maxLength": 128
+    },
+    "reason_code": {
+      "type": ["string", "null"],
+      "enum": [
+        "evidence_sufficient",
+        "missing_source",
+        "conflicting_sources",
+        "low_information_gain",
+        "budget_exhausted",
+        "tool_unavailable",
+        null
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "action": { "const": "local_search" } } },
+      "then": {
+        "properties": {
+          "query": { "type": "string", "minLength": 1, "maxLength": 256 },
+          "candidate_id": { "type": "null" },
+          "reason_code": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "action": { "const": "web_search" } } },
+      "then": {
+        "properties": {
+          "query": { "type": "string", "minLength": 1, "maxLength": 256 },
+          "candidate_id": { "type": "null" },
+          "reason_code": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "action": { "const": "read_evidence" } } },
+      "then": {
+        "properties": {
+          "query": { "type": "null" },
+          "candidate_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+          "reason_code": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "action": { "enum": ["finish", "abstain"] } }
+      },
+      "then": {
+        "properties": {
+          "query": { "type": "null" },
+          "candidate_id": { "type": "null" },
+          "reason_code": {
+            "type": "string",
+            "enum": [
+              "evidence_sufficient",
+              "missing_source",
+              "conflicting_sources",
+              "low_information_gain",
+              "budget_exhausted",
+              "tool_unavailable"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

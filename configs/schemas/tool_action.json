@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence-agent/tool_action.json",
+  "title": "ExternalToolAction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["local_search", "web_search", "read_evidence"]
+    },
+    "query": {
+      "type": "string",
+      "maxLength": 256
+    },
+    "candidate_id": {
+      "type": "string",
+      "maxLength": 128
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "action": { "const": "local_search" } }
+      },
+      "then": { "required": ["query"] }
+    },
+    {
+      "if": {
+        "properties": { "action": { "const": "web_search" } }
+      },
+      "then": { "required": ["query"] }
+    },
+    {
+      "if": {
+        "properties": { "action": { "const": "read_evidence" } }
+      },
+      "then": { "required": ["candidate_id"] }
+    }
+  ]
+}

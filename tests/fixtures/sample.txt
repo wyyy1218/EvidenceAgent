@@ -1,0 +1,3 @@
+Line one: hello
+Line two: 你好世界
+Line three: emoji 🎯 and fullwidth ＡＢＣ

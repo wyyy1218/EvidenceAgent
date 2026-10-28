@@ -1,0 +1,54 @@
+# --- Secrets & private runtime ---
+.env
+!.env.example
+**/private.env
+runs/system/private.env
+
+# --- Python / tooling ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.code-workspace
+
+# --- Sibling WORK_ROOT trees (if someone inits git higher by mistake) ---
+# Note: this repo lives at WORK_ROOT/repo; parent envs/models/data/artifacts/runs are outside.
+
+# --- Large / regenerable (should never be under repo/, but belt-and-suspenders) ---
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.onnx
+*.faiss
+*.wal
+*.shm
+
+# --- Local scratch inside repo ---
+.cache/
+tmp/
+temp/
+*.log
+
+# --- Billing originals if misplaced ---
+**/billing_receipts/
+**/invoices_raw/

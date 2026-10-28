@@ -1,0 +1,6 @@
+﻿repository: https://github.com/langchain-ai/deepagents
+package_version: 0.7.32
+commit: e85c6b98087861512d2c5240305e16cfac68a746
+fetched: 2026-10-25
+source_path: examples/deep_research
+note: Snapshot taken only from the pinned commit; do not mix files from main.

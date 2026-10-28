@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence-agent/tool_result.json",
+  "title": "ToolResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["tool", "status", "data", "is_failure"],
+  "properties": {
+    "tool": {
+      "type": "string",
+      "enum": ["local_search", "web_search", "read_evidence", "web_fetch", "dispatch"]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "empty",
+        "inaccessible",
+        "timeout",
+        "permission_denied",
+        "unsupported",
+        "billing_unknown",
+        "error"
+      ]
+    },
+    "data": { "type": "object" },
+    "error_code": { "type": ["string", "null"] },
+    "error_message": { "type": ["string", "null"] },
+    "billing_status": {
+      "type": ["string", "null"],
+      "enum": ["charged", "free", "unknown", "n/a", null]
+    },
+    "usage": { "type": "object" },
+    "meta": { "type": "object" },
+    "is_failure": { "type": "boolean" },
+    "evidence": {
+      "description": "Only present on successful read; null on failure/empty",
+      "type": ["object", "null"]
+    }
+  }
+}

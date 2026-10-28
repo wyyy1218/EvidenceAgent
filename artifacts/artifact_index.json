@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "description": "Index of large artifacts living outside Git under WORK_ROOT/artifacts and models. No weights stored here.",
+  "updated": "2026-10-28T08:12:08.883740+00:00",
+  "entries": [
+    {
+      "id": "mf_model_base_0001",
+      "kind": "model",
+      "role": "base",
+      "repo_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "path": "/root/autodl-tmp/evidence-agent/models/base/cdbee75f17c01a7cc42f958dc650907174af0554",
+      "size_bytes": 8060917568,
+      "manifest": "/root/autodl-tmp/evidence-agent/data/manifests/mf_model_base_0001.json"
+    },
+    {
+      "id": "mf_model_embedding_0001",
+      "kind": "model",
+      "role": "embedding",
+      "repo_id": "BAAI/bge-m3",
+      "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "path": "/root/autodl-tmp/evidence-agent/models/embedding/5617a9f61b028005a4858fdac845db406aefb181",
+      "size_bytes": 2295437440,
+      "manifest": "/root/autodl-tmp/evidence-agent/data/manifests/mf_model_embedding_0001.json"
+    },
+    {
+      "id": "mf_model_reranker_0001",
+      "kind": "model",
+      "role": "reranker",
+      "repo_id": "BAAI/bge-reranker-v2-m3",
+      "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+      "path": "/root/autodl-tmp/evidence-agent/models/reranker/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+      "size_bytes": 2293260907,
+      "manifest": "/root/autodl-tmp/evidence-agent/data/manifests/mf_model_reranker_0001.json"
+    },
+    {
+      "id": "mf_model_judge_0001",
+      "kind": "model",
+      "role": "judge",
+      "repo_id": "lytang/MiniCheck-Flan-T5-Large",
+      "revision": "96eafd01cee2d16cf81aaa2fb226b14f422a37b3",
+      "path": "/root/autodl-tmp/evidence-agent/models/judge/96eafd01cee2d16cf81aaa2fb226b14f422a37b3",
+      "size_bytes": 3136057486,
+      "manifest": "/root/autodl-tmp/evidence-agent/data/manifests/mf_model_judge_0001.json"
+    },
+    {
+      "id": "mf_s41_freeze_0001",
+      "kind": "manifest",
+      "role": "final_freeze",
+      "path": "data/manifests/mf_s41_freeze_0001.json",
+      "splits": "data/splits/s41_test_subsets.json",
+      "run_plan": "repo/evaluation/protocols/s41_run_plan.json",
+      "release_system": "e0",
+      "config_bundle_hash": "3c8df0d2dc80ff2c94d7d15273a11158c3fade6e6b3800b5af6065fa4a16e259"
+    },
+    {
+      "id": "adapter_sft_exp_sft_0001",
+      "kind": "adapter",
+      "role": "e1_research_only",
+      "path": "artifacts/adapters/sft/exp_sft_0001/",
+      "sha256": "4e8b60a07b8d65f7e66fb547a71d1658bfb94531d4e0c0156589e748fe6391ce",
+      "vllm_name": "sft_e1"
+    },
+    {
+      "id": "adapter_dpo_exp_dpo_0001",
+      "kind": "adapter",
+      "role": "e2_not_released",
+      "path": "artifacts/adapters/dpo/exp_dpo_0001/",
+      "sha256": "011f3c14544ebb96762b6c77a818b5b6fd44d2ea670772630608836d8849ecbc",
+      "vllm_name": "dpo_e2",
+      "meets_target_scale": false
+    },
+    {
+      "id": "rel_s49_e0_0001",
+      "kind": "release",
+      "role": "delivery_s49",
+      "path": "artifacts/releases/rel_s49_e0_0001/",
+      "release_system": "e0",
+      "public_hosting": "NOT_PROVIDED",
+      "checksums": "artifacts/releases/rel_s49_e0_0001/checksums.sha256"
+    },
+    {
+      "id": "rel_s50_e0_0001",
+      "kind": "release",
+      "role": "completion_s50",
+      "path": "artifacts/releases/rel_s50_e0_0001/",
+      "release_system": "e0",
+      "git_tag": "v1.0.0-preview",
+      "public_hosting": "NOT_PROVIDED",
+      "checksums": "artifacts/releases/rel_s50_e0_0001/checksums.sha256"
+    }
+  ]
+}

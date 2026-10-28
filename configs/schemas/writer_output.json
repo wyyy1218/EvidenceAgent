@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence-agent/writer_output.json",
+  "title": "WriterOutput",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["claims", "unresolved"],
+  "properties": {
+    "status_hint": {
+      "type": "string",
+      "enum": ["answered", "partial", "insufficient_evidence", "conflicting_evidence"]
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "evidence_ids"],
+        "properties": {
+          "claim_id": { "type": "string" },
+          "requirement_id": { "type": "string" },
+          "text": { "type": "string" },
+          "evidence_ids": { "type": "array", "items": { "type": "string" } },
+          "scope": { "type": "object" },
+          "status": { "type": "string" }
+        }
+      }
+    },
+    "unresolved": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence-agent/run_result.json",
+  "title": "RunResult",
+  "type": "object",
+  "required": ["status"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "answered",
+        "partial",
+        "insufficient_evidence",
+        "conflicting_evidence",
+        "cancelled",
+        "timeout",
+        "failed"
+      ]
+    },
+    "answer": { "type": ["string", "null"] },
+    "claims": { "type": "array" },
+    "unresolved": { "type": "array" },
+    "evidence_ids": { "type": "array", "items": { "type": "string" } },
+    "route": { "type": "string" }
+  }
+}

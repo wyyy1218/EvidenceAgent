@@ -1,0 +1,73 @@
+# Path map — no secrets. Absolute WORK_ROOT updated at S05 after data-disk verification.
+# Relative paths are from WORK_ROOT unless noted.
+
+work_root:
+  # Local documentation / prep / backup endpoint (Windows).
+  local_prep: "d:/1-实习/项目/EvidenceAgent"
+  # AutoDL data-disk root — mount re-verified 2026-10-26 after expansion (100GiB; capacity gate PASS).
+  autodl: "/root/autodl-tmp/evidence-agent"
+  autodl_candidate: "/root/autodl-tmp/evidence-agent"
+  # Active runtime root on the registered instance (code+data co-located on data disk).
+  active: autodl
+  active_path: "/root/autodl-tmp/evidence-agent"
+  notes: >
+    2026-10-26 probe_s05_host_a002 (container restarted 11:24:57): /root/autodl-tmp is the real
+    data disk (/dev/md0 xfs, /docker/volumes/autodl-container-12ce4dade8-72ec6d56-storage/_data),
+    total 100.00 GiB (26214400 x 4096 B). Capacity gate >=100GiB PASS; S06 downloads allowed.
+    Keep envs/models/cache on this disk; system overlay / is only 30GiB.
+
+paths:
+  repo: "repo"
+  envs: "envs"
+  models: "models"
+  data: "data"
+  artifacts: "artifacts"
+  runs: "runs"
+
+repo_subpaths:
+  rule: "repo/Rule"
+  configs: "repo/configs"
+  locks: "repo/locks"
+  src: "repo/src/evidence_agent"
+  baselines: "repo/baselines"
+  training: "repo/training"
+  evaluation: "repo/evaluation"
+  scripts: "repo/scripts"
+  tests: "repo/tests"
+  examples: "repo/examples"
+  third_party: "repo/third_party"
+  docs: "repo/docs"
+  artifact_index: "repo/artifacts/artifact_index.json"
+
+data_subpaths:
+  raw: "data/raw"
+  snapshots: "data/snapshots"
+  normalized: "data/normalized"
+  chunks: "data/chunks"
+  indexes: "data/indexes"
+  app_db: "data/app"
+  tasks: "data/tasks"
+  splits: "data/splits"
+  sft: "data/sft"
+  dpo: "data/dpo"
+  manifests: "data/manifests"
+
+runs_subpaths:
+  steps: "runs/steps"
+  probes: "runs/probes"
+  system_private_env: "runs/system/private.env"
+  billing: "runs/billing"
+  backups: "runs/backups"
+  work: "runs/work"
+
+models_subpaths:
+  base: "models/base"
+  embedding: "models/embedding"
+  reranker: "models/reranker"
+  judge: "models/judge"
+
+cache_redirects:
+  hf_home: "envs/cache/huggingface"
+  pip_cache: "envs/cache/pip"
+  uv_cache: "envs/cache/uv"
+  torch_home: "envs/cache/torch"
